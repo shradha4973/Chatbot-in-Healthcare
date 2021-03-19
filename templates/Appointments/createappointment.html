@@ -1,0 +1,60 @@
+{% extends 'Base/header.html' %}
+{% block content %}
+{% load static %}
+{% if messages %} 
+{% for message in messages %}
+<div {% if message.tags %} class="{{ message.tags }} alert-danger" {% endif %} id="alert">
+  {{ message }}
+  <i class="material-icons" style="color:black; float:right; cursor: pointer;" id="closealert"></i>
+</div>
+{% endfor %}
+ {% endif %}
+<div id="colorlib-contact">
+	<div class="container">
+		<div class="row animate-box">
+			<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
+				<h2>BOOK AN APPOINTMENT</h2>
+				<p>Health is the highest form of Happiness</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<form method="POST" class="appointment-wrap animate-box">
+					{% csrf_token %}
+					
+					<div class="row form-group">
+						<div class="col-md-12">
+							<label for="start">Choose Your Appointment Date</label>
+							<input type="date" id="start" name="appointment_date" value="2020-11-22" min="2020-11-01"
+								max="2021-12-31">
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-12">
+							<label for="appt">Choose Your Appointment Time</label>
+							<input type="time" id="appt" name="appointment_time" min="00:00" max="21:00" required>
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-6">
+							<label for="appointment">Appointment Price</label>
+							<input type="number" name="price" id="email" class="form-control" value="{{doctor.appointment_price}}" readonly> 
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-12">
+							<label for="message">Medical Description</label>
+							<textarea name="message" id="message" cols="30" rows="10" class="form-control"
+								placeholder="Your Message"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Create Appointment" class="btn btn-primary">
+					</div>
+				
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>RegistrationForm_v10 by Colorlib</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="{% static 'fonts/linearicons/styling.css' %}">
+		<link rel="stylesheet" href="{% static 'css/styling.css' %}">
+	</head>
+
+	<body>
+
+		<div class="wrapper">
+			<div class="inner">
+				<img src="{% static 'images/image-1.png' %}" alt="" class="image-1">
+				<form method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+					{% for app in appointment %}
+					<div class="form-holder">
+                        <span class="lnr lnr-user"></span>
+                        <input type="text" name="username" class="form-control" value="{{app.username}}">
+                    </div>
+                    <div class="form-holder">
+						<span class="lnr lnr-envelope"></span>
+						<input type="text" name="doctorname" class="form-control" placeholder="Userage">
+                    </div>
+					<div class="form-holder">
+						<span class="lnr lnr-phone-handset"></span>
+						<input type="text" name="appointment_price" class="form-control" placeholder="appointment_price">
+					</div>				
+					<button>
+						<span></span>
+					</button>
+					{% if messages %}
+					{% for message in messages %}
+					<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+						<strong>Message: </strong>{{ message }}
+					
+					</div>
+					{% endfor %}
+					{% endif %}
+					
+				</form>
+				<img src="{% static 'images/image-2.png' %}" alt="" class="image-2">
+			</div>
+			
+		</div>
+		
+		<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+		<script src="{% static 'js/mains.js' %}"></script>	
+	</body>
+</html>

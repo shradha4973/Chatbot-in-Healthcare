@@ -1,0 +1,41 @@
+{% extends 'Base/header.html' %}
+{% block content %}
+{% load static %}
+
+{% if messages %} 
+{% for message in messages %}
+<div {% if message.tags %} class="{{ message.tags }} alert-danger" {% endif %} id="alert">
+  {{ message }}
+  <i class="material-icons" style="color:black; float:right; cursor: pointer;" id="closealert"></i>
+</div>
+{% endfor %}
+ {% endif %}
+ 
+<div id="colorlib-contact">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1 animate-box">
+				<form method="POST" enctype="multipart/form-data">
+					 {% csrf_token %}
+					<div class="row form-group">
+						<div class="col-md-12">
+							<label for="report_description">Description of Medical Report</label>
+							<textarea name="report_description" id="report_description" cols="30" rows="10" class="form-control" placeholder="Write something about your medical report...."></textarea>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<label for="id_report_pdf">Upload Your Medical Report:</label>
+						<input type="file" name="report_pdf" accept="application/pdf" id="id_report_pdf">
+					</div>
+					<div class="form-group text-center">
+						<input type="submit" value="Click Here To Upload" class="btn btn-primary">
+					</div>
+
+				</form>		
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+

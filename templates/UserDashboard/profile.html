@@ -1,0 +1,165 @@
+{% extends 'Base/dashboardheader.html' %}
+{% block content %}
+{% load static %}
+<div class="wrapper">
+    <div class="sidebar" data-image="{% static 'img/sidebar-5.jpg' %}">
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="/" class="simple-text">
+                    MEDICARE
+                </a>
+            </div>
+            <ul class="nav">
+                {% if user.is_superuser %}
+                <li>
+                    <a class="nav-link" href="../admindashboard">
+                        <i class="nc-icon nc-paper-2"></i>
+                        <p>Doctor</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="../usertable">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>User</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'listappointment' %}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Appointment</p>
+                    </a>
+                </li>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'userfeedback' %}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Feedback</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'reportlist' %}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Medical Report</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'usertransaction' %}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Transaction</p>
+                    </a>
+                </li>
+                {% else %}
+                <li>
+                    <a class="nav-link" href="{% url 'profile'%}">
+                        <i class="nc-icon nc-circle-09"></i>
+                        <p>User Profile</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="nav-link" href="{% url 'userappointment' %}">
+                        <i class="nc-icon nc-circle-09"></i>
+                        <p>Appointment</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'user_feedback' %}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Feedback</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'listreport' %}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Report</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'listtransaction' %}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Transaction</p>
+                    </a>
+                </li>
+
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg " color-on-scroll="500">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'profile' %}">Welcome {{user.username}}</a>
+                <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                    aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-bar burger-lines"></span>
+                    <span class="navbar-toggler-bar burger-lines"></span>
+                    <span class="navbar-toggler-bar burger-lines"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                    
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="no-icon">Click Here</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="{% url 'updateprofile' %}">Update Profile</a>
+                                <a class="dropdown-item" href="{% url 'updateamount' %}">Update Amount</a>
+                                <a class="dropdown-item" href="{% url 'userdelete' %}">Delete Account</a>
+                                <a class="dropdown-item" href="{% url 'doctor' %}">Create Appointment</a>
+                                <a class="dropdown-item" href="{% url 'logout_user' %}">Logout</a>  
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="content" style="width: 220rem;" >
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card card-user">
+                            <div class="card-image" style="height: 15rem;">
+                                {% if user.profile.userbackgroundImage%}
+                                <img src="{{user.profile.userbackgroundImage.url}}" alt="...">
+                                {% else %}
+                                <img src="{% static 'images/blank-white-page.jpg'%}" alt="...">
+                                {% endif %}
+                            </div>
+                            <div class="card-body">
+                                <div class="author">
+                                    <a href="#">
+                                        {% if user.profile.userprofileImage %}
+                                            <img class="avatar border-gray"style="width: 20em; height: 13rem;" src="{{user.profile.userprofileImage.url}}"
+                                            alt="..."><br><br>
+                                            <h5 class="title">Age: {{user.profile.age}}<br></h5>
+                                            <h5 class="title">Username: {{user.username}}<br></h5>
+                                            <h5 class="title">Name: {{user.first_name}} {{user.last_name}}<br></h5>
+                                            <h5 class="title">Email : {{user.email}} <br></h5>
+                                            <h5 class="title">Biography: {{user.profile.user_bio}}<br></h5>
+                                          
+                                        {% else %}
+                                            <img class="avatar border-gray" src="{% static 'images/default-profile.png' %}"
+                                            alt="...">
+                                            <h5 class="title">Age: {{user.profile.age}}<br></h5>
+                                            <h5 class="title">Username: {{user.username}}<br></h5>
+                                            <h5 class="title">Name: {{user.first_name}} {{user.last_name}}<br></h5>
+                                            <h5 class="title">Email : {{user.email}} <br></h5>
+                                            <h5 class="title">Biography: {{user.profile.user_bio}}<br></h5>
+
+                                        
+                                        {% endif %}
+                                    </a>
+                                </div><br><br><br><br>
+                                 
+                            </div>
+                            <hr>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}

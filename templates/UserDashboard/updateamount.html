@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>RegistrationForm_v10 by Colorlib</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'fonts/linearicons/styling.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styling.css' %}">
+</head>
+
+<body>
+   
+    <div class="wrapper">
+        <div class="inner">
+            <div class="col-md-6">
+                <div id="colorlib-logo"><a href="/">
+                        <i class="flaticon-stethoscope"></i>MEDI<span>CARE</span></a>
+                </div>
+        
+            </div>
+            <img src="{% static 'images/image-1.png' %}" alt="" class="image-1">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-holder">
+                    <span class="lnr lnr-user"></span>
+                    <input type="number" name="user_amount" class="form-control" placeholder="Amount">
+                </div>
+                <button>
+                    <span>UPDATE AMOUNT</span>
+                </button>
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    <strong>Message: </strong>{{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+            </form>
+            <img src="{% static 'images/image-2.png' %}" alt="" class="image-2">
+        </div>
+    </div>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/mains.js' %}"></script>
+</body>
+
+</html>

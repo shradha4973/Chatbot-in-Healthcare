@@ -1,0 +1,389 @@
+{% extends 'Base/header.html' %}
+{% block content %}
+{% load static %}
+
+<div class="colorlib-loader"></div>
+<div id="page">
+	<aside id="colorlib-hero">
+		<div class="flexslider">
+			<ul class="slides">
+				<li style="background-image: url({% static 'images/img_bg_6.jpg' %});">
+					<div class="overlay"></div>
+					<div class="container">
+						<div class="row">
+							<div class="col-md-8 col-md-offset-2 col-md-pull-2 slider-text">
+								<div class="slider-text-inner">
+									<h1>We Serve <strong> Quality Healthcare Service</strong></h1>
+									<h2 class="doc-holder">Health is a State of Complete Harmony of The Body, Mind and Spirit</h2>
+									 
+									<p><a class="btn btn-primary btn-lg" href="/Appointment/appointment/">Make an
+											Appointment<i class="icon-calendar3"></i></a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li style="background-image: url({% static 'images/img_bg_5.jpg' %});">
+					<div class="overlay"></div>
+					<div class="container">
+						<div class="row">
+							<div class="col-md-8 col-md-offset-2 col-md-pull-2 slider-text">
+								<div class="slider-text-inner">
+									<h1>Welcome <strong> to MEDICARE</strong></h1>
+									<h2 class="doc-holder">Our Purpose is to improve the healthcare and living conditions of our user</h2>
+									 
+									<p><a class="btn btn-primary btn-lg" href="/Appointment/appointment/">Make an
+											Appointment<i class="icon-calendar3"></i></a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li style="background-image: url({% static 'images/img_bg_1.jpg' %});">
+					<div class="overlay"></div>
+					<div class="container">
+						<div class="row">
+							<div class="col-md-8 col-md-offset-2 col-md-pull-2 slider-text">
+								<div class="slider-text-inner">
+									<h1>Have an Access to <strong>a Health Professional at any time</strong></h1>
+									<h2>Healthcare for Everyone Everywhere Anytime.</h2>
+									<p><a class="btn btn-primary btn-lg" href="/Appointment/appointment/">Make an
+											Appointment<i class="icon-calendar3"></i></a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li style="background-image: url({% static 'images/img_bg_2.jpg' %});">
+					<div class="overlay"></div>
+					<div class="container">
+						<div class="row">
+							<div class="col-md-8 col-md-offset-2 col-md-pull-2 slider-text">
+								<div class="slider-text-inner">
+									<h1>We help you to find <strong>Happiness</strong></h1>
+									<h2>There can be no happiness without good health.</h2>
+									<p><a class="btn btn-primary btn-lg" href="/Appointment/appointment/">Make an
+											Appointment<i class="icon-calendar3"></i></a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</aside>
+
+	<div id="colorlib-intro">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="intro animate-box">
+						<div class="intro-grid color-1">
+							<span class="icon"><i class="flaticon-hospital"></i></span>
+							<h3>Medical Counseling</h3>
+							<p>We offer medical consulting such as advice, expertise, and guidance to our patient to help them receive better healthcare.</p>
+							 
+						</div>
+						<div class="intro-grid color-2">
+							<span class="icon"><i class="flaticon-healthy-1"></i></span>
+							<h3>Qualified Doctors</h3>
+							<p>We provide service through a dedicated teams of doctors who are highly qualified and committed to excellence in providing a quality treatment to the patient.</p>
+							 
+						</div>
+						<div class="intro-grid color-2">
+							<span class="icon"><i class="flaticon-sign"></i></span>
+							<h3>Rehabilitation Center</h3>
+							<p>We help people with rehabilitation services that includes physical therapy, occupational therapy, speech and language therapy, cognitive therapy, and mental health rehabilitation services.</p>
+							 
+						</div>
+						<div class="intro-grid color-3">
+							<span class="icon"><i class="flaticon-ambulance"></i></span>
+							<h3>Emergency Services</h3>
+							<p>We are 24 hours available for your service. We provide emergency medical services like ambulance services to transport serious illness and injuries.</p>
+							 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="colorlib-about">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 sticky-parent">
+					<div id="sticky_item">
+						<h3>Our Schedule</h3>
+						 
+					 
+						<div class="schedule">
+							<span class="icon"><i class="icon-calendar3"></i></span>
+							<div class="desc">
+								<h4>Sunday</h4>
+								<span>9:00 am - 12:00 pm</span>
+								<h4>Monday</h4>
+								<span>9:00 am - 12:00 pm</span>
+								<h4>Tuesday</h4>
+								<span>9:00 am - 12:00 pm</span>
+								<h4>Wednesday</h4>
+								<span>9:00 am - 12:00 pm</span>
+								<h4>Thursday</h4>
+								<span>9:00 am - 12:00 pm</span>
+								<h4>Friday</h4>
+								<span>9:00 am - 12:00 pm</span>
+								<h4>Saturday</h4>
+								<span>9:00 am - 12:00 pm</span>
+							
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-7 col-md-push-1">
+					<h2>About Medicare</h2>
+					<p>
+						We are here serving you the best health services since 2000.
+					</p>
+					<div class="fancy-collapse-panel">
+						<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingOne">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+											aria-expanded="true" aria-controls="collapseOne">Why choose us?
+										</a>
+									</h4>
+								</div>
+								<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+									aria-labelledby="headingOne">
+									<div class="panel-body">
+										<div class="row">
+											<div class="col-md-6">
+												<p>We provide medical services to our patients with affordable medical expenses. We pave a way to well qualified doctors in different
+													medical field to provide better treatment to our patient. </p>
+											</div>
+											<div class="col-md-6">
+												<p>We are available 24 hours to provide faster and better treatment to our patients. We provide free medical counseling and rehabilitation centers
+													to our patients. </p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingTwo">
+									<h4 class="panel-title">
+										<a class="collapsed" data-toggle="collapse" data-parent="#accordion"
+											href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">What
+											we do?
+										</a>
+									</h4>
+								</div>
+								<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+									aria-labelledby="headingTwo">
+									<div class="panel-body">
+										<p>We are the one of the best medical provider found back in 2000. With the year long of contribution in the medical field we provide our patients 
+											with the best medical care in affordable expenses.
+										</p>
+										<ul>
+											<li>We are here to guide you to live happy and healthy life</li>
+											<li>We advocate with health is wealth.</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="headingThree">
+									<h4 class="panel-title">
+										<a class="collapsed" data-toggle="collapse" data-parent="#accordion"
+											href="#collapseThree" aria-expanded="false"
+											aria-controls="collapseThree">Offer Services
+										</a>
+									</h4>
+								</div>
+								<div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+									aria-labelledby="headingThree">
+									<div class="panel-body">
+										<p>We bring to our patients the best and qualified medical personnal's with years of experience in treating patient's 
+											with different illness. We provide the best environment for healing our patient. We offer 24 hours of service to help 
+											patient reach out to our doctors whenever and whenever. 
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="colorlib-services">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
+					<h2>Our Services</h2>
+					<p>Health is the highest form of Happiness</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 animate-box">
+					<div class="services">
+						<span class="icon">
+							<i class="flaticon-healthy-1"></i>
+						</span>
+						<div class="desc">
+							<h3><a href="#">Qualified Doctors</a></h3>
+							<p>We provide service through a dedicated teams of doctors 
+								who are highly qualified and committed to excellence in providing a quality treatment to the patient.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 animate-box">
+					<div class="services">
+						<span class="icon">
+							<i class="flaticon-hospital"></i>
+						</span>
+						<div class="desc">
+							<h3><a href="#">Medical Counseling</a></h3>
+							<p>We offer medical consulting such as advice, expertise, and guidance to our 
+								patient to help them receive better healthcare and stay healthy.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 animate-box">
+					<div class="services">
+						<span class="icon">
+							<i class="flaticon-ambulance"></i>
+						</span>
+						<div class="desc">
+							<h3><a href="#">Emergency Services</a></h3>
+							<p>We are 24 hours available for your service. We provide emergency medical services 
+								like ambulance services to transport serious illness and injuries.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 animate-box">
+					<div class="services">
+						<span class="icon">
+							<i class="flaticon-blood-donation"></i>
+						</span>
+						<div class="desc">
+							<h3><a href="#">Blood Bank</a></h3>
+							<p>We provide blood bank to collect blood to use it most effectively according to the needs of the patient. </p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 animate-box">
+					<div class="services">
+						<span class="icon">
+							<i class="flaticon-radiation"></i>
+						</span>
+						<div class="desc">
+							<h3><a href="#">Operation Theater</a></h3>
+							<p>We provide operation theater to carry out any surgical operations in a safe, professional and aseptic environment. </p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 animate-box">
+					<div class="services">
+						<span class="icon">
+							<i class="flaticon-medical"></i>
+						</span>
+						<div class="desc">
+							<h3><a href="#">Free Medicine</a></h3>
+							<p>In many unescapable cases, we have partnered with many health insurance companies 
+								to provide people with free medical facilities.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="colorlib-choose">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="choose">
+					<div class="half img-bg" style="background-image: url({% static 'images/img_bg_3.jpg' %});"></div>
+					<div class="half features-wrap">
+						<div class="colorlib-heading animate-box">
+							<h2>What Makes Us Best?</h2>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="features animate-box">
+									<span class="icon text-center"><i class="flaticon-healthy-1"></i></span>
+									<div class="desc">
+										<h3>Qualified Doctors</h3>
+										<p>We provide service through a dedicated teams of doctors who are highly qualified and committed
+											 to excellence in providing a quality treatment to the patient.</p>
+									</div>
+								</div>
+								<div class="features animate-box">
+									<span class="icon text-center"><i class="flaticon-stethoscope"></i></span>
+									<div class="desc">
+										<h3>Free Consultation</h3>
+										<p>We offer medical consulting such as advice, expertise, and guidance to our patient
+											 to help them receive better healthcare. </p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="features animate-box">
+									<span class="icon text-center"><i class="flaticon-medical-1"></i></span>
+									<div class="desc">
+										<h3>Online Appointment</h3>
+										<p>We bring online appointment for quicker and easier way to get reach to the medical personnal.</p>
+										<br>
+									</div>
+								</div>
+								<div class="features animate-box">
+									<span class="icon text-center"><i class="flaticon-radiation"></i></span>
+									<div class="desc">
+										<h3>Modern Facilities</h3>
+										<p>We bring healthcare with modern technology like chatbot to answer the quiries of our patients to provide faster response especially
+											incase of emergency. </p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="colorlib-doctor">
+		<div class="container">
+			<div class="row animate-box">
+				<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
+					<h2>Well Experienced Doctors</h2>
+					<p>Medicines cure diseases, but only doctors can cure patients.</p>
+				</div>
+			</div>
+
+			<div class="row">
+				{% for doc in doct %}
+				<div class="col-md-3 col-sm-6 col-xs-12 animate-box text-center">
+					<div class="doctor">
+
+						<div class="staff-img" style="background-image: url({{doc.profileImage.url}});"></div>
+						<div class="desc">
+							<h3><a href="#">Dr. {{doc.firstName}} {{doc.lastName}}</a></h3>
+							<h3><a href="#">{{doc.qualification}}</a></h3>
+							<h3><a href="#">{{doc.specialization}}</a></h3>
+							<ul class="colorlib-social">
+								<li><a href="{% url 'createappointment' doc.doctor_id%}"><i
+											class="icon-calendar3"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

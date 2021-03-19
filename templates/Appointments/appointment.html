@@ -1,0 +1,53 @@
+{% extends 'Base/header.html' %}
+{% block content %}
+{% load static %} 
+
+	<div id="colorlib-doctor">
+		<div class="container">
+			<form method="GET" action="{% url 'search' %}">
+				{% csrf_token %}
+				<label for="search-doctor">Search Doctors</label>
+				<div class="input-group input-group-lg">
+				  <input type="text" id="id_q" name="q" class="form-control" placeholder="Search for..." aria-label="Search for...">
+				  <span class="input-group-btn">
+					<button class="btn btn-primary" type="submit">
+						<span>Go</span></button>
+				  </span>
+				</div>
+			  </form>
+			<div class="row animate-box">
+				<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
+					<h2>Well Experienced Doctors</h2>
+					<p>The greates wealth is good health</p>
+				</div>
+			</div>
+			
+			<div class="row">
+				{% if doctor %}
+				 {% for doc in doctor %}
+				<div class="col-md-3 col-sm-6 col-xs-12 animate-box text-center">
+					<div class="doctor">
+						<div class="staff-img" style="background-image: url({{doc.profileImage.url}});"></div>
+						<div class="desc">
+							<h3><a href="#">Dr. {{doc.firstName}} {{doc.lastName}}</a></h3>
+							<h3><a href="#">{{doc.specialization}}</a></h3>
+							<h3><a href="#">{{doc.qualification}}</a></h3>
+							<h3><a href="#"> रू {{doc.appointment_price}}</a></h3>
+							<ul class="colorlib-social">
+								<li><a href="{% url 'createappointment' doc.doctor_id%}"><i class="icon-calendar3"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			
+			{% else %}
+			<h1>No doctor found</h1>
+			{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+	
+	

@@ -1,0 +1,51 @@
+{% extends 'Base/header.html' %}
+{% block content %}
+{% load static %}
+<div id="colorlib-contact">
+	<div class="container">
+		<div class="row animate-box">
+			<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
+				<h2>UPDATE AN APPOINTMENT</h2>
+				<p>Health is the highest form of Happiness</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<form method="POST" class="appointment-wrap animate-box">
+					{% csrf_token %}
+					{% if appointment %}
+					<div class="row form-group">
+						<div class="col-md-12">
+							<label for="date">Choose Your Appointment Date</label>
+							<input type="date" value="{{appointment.appointment_date | date:'Y-m-d'}}"  name="appointment_date" min="2020-11-01" max="2021-12-31">
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-12">
+							<label for="appt">Choose Your Appointment Time</label>
+							<input type="time" value = "{{appointment.appointment_time | time:'H:i'}}" name="appointment_time" min="00:00" max="21:00">
+						</div>
+					</div>
+
+					{% for message in messages %}
+					<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+						<strong>Message: </strong>{{ message }}
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					{% endfor %}
+					<div class="form-group">
+						<input type="submit" value="Update Appointment" class="btn btn-primary">
+					</div>
+					{% endif %}
+				</form>
+
+
+			</div>
+
+
+		</div>
+	</div>
+</div>
+{% endblock %}

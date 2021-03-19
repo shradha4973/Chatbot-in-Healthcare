@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>RegistrationForm_v10 by Colorlib</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="{% static 'fonts/linearicons/styling.css' %}">
+		<link rel="stylesheet" href="{% static 'css/styling.css' %}">
+	</head>
+
+	<body>
+
+		<div class="wrapper">
+			<div class="inner">
+				<img src="{% static 'images/image-1.png' %}" alt="" class="image-1">
+				<form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+					<h3>New Account?</h3>
+					<div class="form-holder">
+                        <span class="lnr lnr-user"></span>
+                        <input type="text" name="first_name" class="form-control" placeholder="First name">
+					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-phone-handset"></span>
+						<input type="text" name="last_name" class="form-control" placeholder="Last name">
+					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-envelope"></span>
+						<input type="text" name="username" class="form-control" placeholder="Username">
+					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-envelope"></span>
+						<input type="text" name="age" class="form-control" placeholder="Userage">
+                    </div>
+                    <div class="form-holder">
+						<span class="lnr lnr-envelope"></span>
+						<input type="email"  class="form-control" name="email" placeholder="Email">
+					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-lock"></span>
+						<input type="password" class="form-control"  name="password1" placeholder="Password" >
+					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-lock"></span>
+						<input type="password" class="form-control" name="password2" placeholder="Confirm Password">
+					</div><br>
+					<div class="form-group">
+						<span class="lnr lnr-lock"></span>
+                        <textarea class="form-control" name = "user_bio" id="message" rows="3" placeholder="Your biography"></textarea>
+                    </div><br>
+					<div class="row form-group">
+						<div class="col-md-12">
+							<label for="id_profileImage">Select Your profile Image
+
+							</label>
+							<input type="file" name="userprofileImage" accept="image/jpeg" id="id_profileImage">
+						</div>
+					</div><br>
+						<div class="row form-group">
+						<div class="col-md-12">
+							<label for="id_backgroundImage">Select Your background Image</label>
+							<input type="file" name="userbackgroundImage" accept="image/jpeg" id="id_backgroundImage">
+						</div>
+					</div>					
+					<button>
+						<span>Register</span>
+					</button>
+					{% if messages %}
+					{% for message in messages %}
+					<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+						<strong>Message: </strong>{{ message }}
+					
+					</div>
+					{% endfor %}
+					{% endif %}
+					
+				</form>
+				<img src="{% static 'images/image-2.png' %}" alt="" class="image-2">
+			</div>
+			
+		</div>
+		
+		<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+		<script src="{% static 'js/mains.js' %}"></script>	
+	</body>
+</html>

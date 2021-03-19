@@ -1,0 +1,97 @@
+{% extends 'Base/header.html' %}
+{% block content %}
+{% load static %}
+<div id="colorlib-contact">
+    <div class="container">
+        <div class="row animate-box">
+            <div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
+                <h2>EDIT PROFILE</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <form method="POST" enctype="multipart/form-data" class="appointment-wrap animate-box">
+                    {% csrf_token %}
+
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <label for="fname">FIRST NAME</label>
+                            <input type="text" name="firstName" id="fname" class="form-control" required
+                                value="{{doctors.firstName}}">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="lname">LAST NAME</label>
+                            <input type="text" name="lastName" id="lname" class="form-control" required
+                                value="{{doctors.lastName}}">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label for="email">EMAIL</label>
+                            <input type="text" name="emailAddress" id="email" class="form-control" required
+                                value="{{doctors.emailAddress}}">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label for="subject">QUALIFICATION</label>
+                            <select class="selectpicker form-control" name="qualification">
+                                <option>{{doctors.qualification}}</option>
+                                <option>D.O.</option>
+                                <option>M.D.</option>
+                                <option>M.B.B.S.</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label for="subject">SPECIALIZATION</label>
+                            <select class="selectpicker form-control" name="specialization">
+                                <option>{{doctors.specialization}}</option>
+                                <option>Main Surgeon</option>
+                                <option>Cardiologist</option>
+                                <option>Dental</option>
+                                <option>Gynaecologist</option>
+                                <option>Paediatrician</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <label for="email">APPOINTMENT PRICE</label>
+                            <input type="text" name="appointment_price" id="email" class="form-control" required
+                                value="{{doctors.appointment_price}}">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label class="required" for="id_profileImage">PROFILE IMAGE:</label>
+                            <input type="file" name="profileImage" accept="image/jpeg" required id="id_profileImage">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="required" for="id_backgroundImage">BACKGROUND IMAGE</label>
+                            <input type="file" name="backgroundImage" accept="image/jpeg" required
+                                id="id_backgroundImage">
+                        </div>
+                    </div>
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        <strong>Message: </strong>{{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    <div class="form-group">
+                        <input type="submit" value="Update Profile" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

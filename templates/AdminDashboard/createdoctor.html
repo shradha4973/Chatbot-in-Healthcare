@@ -1,0 +1,103 @@
+{% extends 'Base/header.html' %}
+{% block content %}
+{% load static %}
+
+{% if messages %} 
+{% for message in messages %}
+<div {% if message.tags %} class="{{ message.tags }} alert-danger" {% endif %} id="alert">
+  {{ message }}
+  <i class="material-icons" style="color:black; float:right; cursor: pointer;" id="closealert"></i>
+</div>
+{% endfor %}
+ {% endif %}
+
+<div id="colorlib-contact">
+	<div class="container">
+		<div class="row animate-box">
+			<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
+				<h2>CREATE DOCTOR</h2>
+				<p> Health is the highest form of Happiness</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<form method="POST" enctype="multipart/form-data" class="appointment-wrap animate-box">
+					{% csrf_token %}
+
+					<div class="row form-group">
+						<div class="col-md-6">
+							<label for="fname">First Name</label>
+							<input type="text" name="firstName" id="fname" class="form-control"
+								placeholder="Your firstname">
+						</div>
+						<div class="col-md-6">
+							<label for="lname">Last Name</label>
+							<input type="text" name="lastName" id="lname" class="form-control"
+								placeholder="Your lastname">
+						</div>
+					</div>
+
+					<div class="row form-group">
+						<div class="col-md-12">
+							<label for="email">Email</label>
+							<input type="email" name="emailAddress" id="email" class="form-control"
+								placeholder="Your email address">
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-12">
+							<label for="subject">Qualification</label>
+							<select class="selectpicker form-control" name="qualification">
+								<option>Choose Qualification</option>
+								<option>D.O.</option>
+								<option>M.D.</option>
+								<option>M.B.B.S.</option>
+							</select>
+						</div>
+
+					</div>
+					<div class="row form-group">
+						<div class="col-md-12">
+							<label for="subject">Specialization</label>
+							<select class="selectpicker form-control" name="specialization">
+								<option>Choose Specialization</option>
+								<option>Main Surgeon</option>
+								<option>Cardiologist</option>
+								<option>Dental</option>
+								<option>Gynaecologist</option>
+								<option>Paediatrician</option>
+							</select>
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-6">
+							<label for="appointment_price">Appointment Price</label>
+							<input type="number" name="appointment_price" id="email" class="form-control"
+								placeholder= "रू Appointment Price">
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-12">
+							<label class="required" for="id_profileImage">Profile Image:</label>
+							<input type="file" name="profileImage" accept="image/jpeg" required id="id_profileImage">
+						</div>
+
+					</div>
+					<div class="row form-group">
+						<div class="col-md-12">
+							<label class="required" for="id_profileImage">Background Image:</label>
+							<input type="file" name="backgroundImage" accept="image/jpeg" required id="id_profileImage">
+						</div>
+
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Create" class="btn btn-primary">
+					</div>
+
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

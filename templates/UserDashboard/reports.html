@@ -1,0 +1,219 @@
+{% extends 'Base/dashboardheader.html' %}
+{% block content %}
+{% load static %}
+<div class="wrapper">
+    <div class="sidebar" data-image="{% static 'img/sidebar-5.jpg' %}">
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="/" class="simple-text">
+                    MEDICARE
+                </a>
+            </div>
+            <ul class="nav">
+                {% if user.is_superuser %}
+                <li>
+                    <a class="nav-link" href="../admindashboard">
+                        <i class="nc-icon nc-paper-2"></i>
+                        <p>Doctor</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="../usertable">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>User</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'listappointment' %}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Appointment</p>
+                    </a>
+                </li>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'userfeedback' %}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Feedback</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'reportlist' %}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Medical Report</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'usertransaction' %}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Transaction</p>
+                    </a>
+                </li>
+                {% else %}
+                <li>
+                    <a class="nav-link" href="{% url 'profile'%}">
+                        <i class="nc-icon nc-circle-09"></i>
+                        <p>User Profile</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="nav-link" href="{% url 'userappointment' %}">
+                        <i class="nc-icon nc-circle-09"></i>
+                        <p>Appointment</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'user_feedback' %}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Feedback</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'listreport' %}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Report</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'listtransaction' %}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Transaction</p>
+                    </a>
+                </li>
+
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg " color-on-scroll="500">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'profile' %}">Welcome {{user.username}}</a>
+                <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                    <ul class="navbar-nav ml-auto">
+                        <form method="GET" action="{% url 'search_report' %}">
+                            {% csrf_token %}
+                            <ul class="nav navbar-nav mr-auto">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <input type="text" id="id_q" name="q">
+                                        <button type="submit">Search</button>
+                                    </a>
+                                </li>
+                            </ul>
+                        </form>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="no-icon">Click Here</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="{% url 'updateprofile' %}">Update Profile</a>
+                                <a class="dropdown-item" href="{% url 'updateamount' %}">Update Amount</a>
+                                <a class="dropdown-item" href="{% url 'userdelete' %}">Delete Account</a>
+                                <a class="dropdown-item" href="{% url 'doctor' %}">Create Appointment</a>
+                                <a class="dropdown-item" href="{% url 'logout_user' %}">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        {% if report %}
+                        <div class="card  card-tasks">
+
+                           
+                            <table class="table table-sm">
+
+                                <thead>
+                                    <tr>
+                                        <th>USERNAME</th>
+                                        <th>DOCTOR NAME</th>
+                                        <th>DOCTOR SPECIALIZATION</th>
+                                        <th>REPORT</th>
+                                        <th>MEDICAL DESCRIPTION</th>
+                                        <th>DOWNLOAD</th>
+                                        <th>UPDATE</th>
+                                        <th>DELETE</th>
+
+                                    </tr>
+                                </thead>
+                                {% for report in report %}
+                                <tbody>
+                                    <tr>
+                                        <td>{{report.user.username}}</td>
+                                        <td>{{report.doctor.firstName}} {{report.doctor.lastName}}</td>
+                                        <td>{{report.doctor.specialization}}</td>
+                                        <td>{{report.report_pdf}}</td>
+                                        <td>{{report.report_description}}</td>
+                                        <td><a class="btn btn-sm btn-success"
+                                                href="{% url 'downloadreport' report.id %}">Download Report</a>
+                                        </td>
+                                        <td><a class="btn btn-sm btn-infor"
+                                                href="{% url 'updatereport' report.id %}">Update Report</a>
+                                        </td>
+                                        <td><a class="btn btn-sm btn-danger"
+                                                href="{% url 'deletereport' report.id %}">Delete Report</a>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                                {% endfor %}
+
+                            </table>
+                            
+                        </div>
+                        {% if report.has_other_pages %}
+                            <ul class="pagination">
+                                {% if report.has_previous %}
+                                <button><a href="?page={{ report.previous_page_number}}">&laquo;</a></button>
+                                {% else %}
+                                <button class="disabled"><span>&laquo;</span></button>
+                                {% endif %}
+                                {% for i in report.paginator.page_range %}
+                                {% if report.number == i %}
+                                <button class="active"><span>{{ i }}<span class="sr-only"></span></span></button>
+                                {% else %}
+                                <button><a href="?page={{ i }}">{{ i }}</a></button>
+                                {% endif %}
+                                {% endfor %}
+
+                                {% if report.has_next %}
+                                <button><a href="?page={{ report.next_page_number }}"> &raquo;</a></button>
+                                {% else %}
+                                <button class="disabled"><span>&raquo;</span></button>
+                                {% endif%}
+                            </ul>
+                            {% endif %}
+
+                            {% else %}
+                            <h1>You have not uploaded any report</h1>
+                            {% endif %}
+                    </div>
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        <strong>Message: </strong>{{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="card-footer ">
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,264 @@
+{% extends 'Base/dashboardheader.html' %}
+{% block content %}
+{% load static %}
+<div class="wrapper">
+    <div class="sidebar" data-image="{% static 'img/sidebar-5.jpg' %}">
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="/" class="simple-text">
+                    MEDICARE
+                </a>
+            </div>
+            <ul class="nav">
+                {% if user.is_superuser %}
+                <li>
+                    <a class="nav-link" href="../admindashboard">
+                        <i class="nc-icon nc-paper-2"></i>
+                        <p>Doctor</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="../usertable">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>User</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'listappointment' %}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Appointment</p>
+                    </a>
+                </li>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'userfeedback' %}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Feedback</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'reportlist' %}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Medical Report</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'usertransaction' %}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Transaction</p>
+                    </a>
+                </li>
+                {% else %}
+                <li>
+                    <a class="nav-link" href="{% url 'profile'%}">
+                        <i class="nc-icon nc-circle-09"></i>
+                        <p>User Profile</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="nav-link" href="{% url 'userappointment' %}">
+                        <i class="nc-icon nc-circle-09"></i>
+                        <p>Appointment</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'user_feedback' %}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Feedback</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'listreport' %}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Report</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'listtransaction' %}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>Transaction</p>
+                    </a>
+                </li>
+
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg " color-on-scroll="500">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'profile' %}">Welcome {{user.username}}</a>
+                <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                    aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-bar burger-lines"></span>
+                    <span class="navbar-toggler-bar burger-lines"></span>
+                    <span class="navbar-toggler-bar burger-lines"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="no-icon">Click Here</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="{% url 'updateprofile' %}">Update Profile</a>
+                                <a class="dropdown-item" href="{% url 'updateamount' %}">Update Amount</a>
+                                <a class="dropdown-item" href="{% url 'userdelete' %}">Delete Account</a>
+                                <a class="dropdown-item" href="{% url 'doctor' %}">Create Appointment</a>
+                                <a class="dropdown-item" href="{% url 'logout_user' %}">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Welcome {{user.username}}</h4>
+                            </div>
+
+                            <div class="card-body">
+
+                                <form method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-md-6 pr-1">
+                                            <label for="fname">FIRST NAME</label>
+                                            <input type="text" name="first_name" id="fname" class="form-control"
+                                                required value="{{user.first_name}}">
+                                        </div>
+                                        <div class="col-md-6 pr-1">
+                                            <label for="fname">LAST NAME</label>
+                                            <input type="text" name="last_name" id="lname" class="form-control"
+                                                value="{{user.last_name}}">
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 pr-1">
+                                            <label for="fname">USERNAME</label>
+                                            <input type="text" name="username" id="username" class="form-control"
+                                                required value="{{user.username}}">
+                                        </div>
+                                        <div class="col-md-6 pr-1">
+                                            <label for="email">EMAIL ADDRESS</label>
+                                            <input type="email" name="email" id="email" class="form-control"
+                                                value="{{user.email}}">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="age"> AGE</label>
+                                                <input type="text" name="age" id="age" class="form-control" required
+                                                    value="{{user.profile.age}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="age">BIOGRAPHY</label>
+                                        <span class="lnr lnr-lock"></span>
+                                        <textarea class="form-control" name="user_bio" id="user_id"
+                                            rows="3">{{user.profile.user_bio}}</textarea>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-md-12">
+                                            <label for="id_profileImage">PROFILE IMAGE:</label><br>
+                                            <input type="file" name="userprofileImage" accept="image/jpeg"
+                                                id="id_profileImage" value="{{user.profile.userprofileImage}}">
+                                        </div><br><br>
+                                        <div class="col-md-12">
+                                            <label for="id_backgroundImage">BACKGROUND IMAGE:</label><br>
+                                            <input type="file" name="userbackgroundImage" accept="image/jpeg"
+                                                id="id_backgroundImage" value="user.profile.userbackgroundImage">
+                                        </div>
+                                    </div>
+                                    {% if messages %}
+                                    {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show"
+                                        role="alert">
+                                        <strong>Message: </strong>{{ message }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update
+                                        Profile</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card card-user">
+                            <div class="card-image">
+                                {% if user.profile.userbackgroundImage %}
+                                <img src="{{user.profile.userbackgroundImage.url}}" alt="...">
+                                {% else %}
+                                <img src="{% static 'images/whitespace.png' %}" alt="...">
+                                {% endif %}
+
+                            </div>
+                            <div class="card-body">
+                                <div class="author">
+                                    <a href="#">
+                                        {% if user.profile.userprofileImage %}
+                                        <img class="avatar border-gray" src="{{user.profile.userprofileImage.url}}"
+                                            alt="...">
+                                        <h5 class="title">{{user.first_name}} {{user.last_name}}
+                                            <br>
+                                            {{user.profile.user_bio}}
+                                        </h5>
+                                        {% else %}
+                                        <img class="avatar border-gray" src="{% static 'images/default-profile.png' %}"
+                                            alt="...">
+
+                                        <h5 class="title">{{user.first_name}} {{user.last_name}}
+
+                                            <br>
+                                            {{user.profile.user_bio}}
+                                        </h5>
+                                        {% endif %}
+                                    </a>
+
+                                    <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="http://example.com"
+                                                id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                <a class="dropdown-item" href="{% url 'deleteprofile' %}">Delete
+                                                    Profile</a>
+                                                <a class="dropdown-item" href="{% url 'deletebackgroundImage' %}">Delete
+                                                    BackgroundImage</a>
+
+
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
